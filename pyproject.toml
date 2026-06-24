@@ -5,7 +5,7 @@ description = "Python bridge for RuleOak Evidence JSONL v1, manifests, and local
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "Apache-2.0" }
-authors = [{ name = "Stanley Sun", email = "stanleysunsg@gmail.com" }]
+authors = [{ name = "Sun Shaobin", email = "hello@ruleoak.com" }]
 keywords = ["ruleoak", "ai-agents", "evidence-jsonl", "flight-recorder", "agent-firewall"]
 
 [project.scripts]
@@ -19,3 +19,6 @@ build-backend = "setuptools.build_meta"
 Homepage = "https://ruleoak.com/public-repositories.html"
 Repository = "https://github.com/ruleoak/ruleoak-py"
 Issues = "https://github.com/ruleoak/ruleoak-py/issues"
+
+[project.optional-dependencies]
+dev = ["pytest"]

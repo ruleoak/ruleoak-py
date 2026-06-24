@@ -1,39 +1,29 @@
-# ruleoak-py v1.0.0
+# ruleoak-py
 
-Python adapters and bridge utilities for adding RuleOak permission, approval, evidence, and replay to Python agentic workflows.
+Python bridge for RuleOak-compatible Evidence JSONL, local flight recording, policy decisions, approval callbacks, redaction, replay, and framework-shaped agent examples.
 
-## Use this repo when you need
-
-- Evidence JSONL v1 helpers
-- local flight recording in Python
-- LangGraph-style integration helpers
-- OpenAI Agents Python-style integration helpers
-- CrewAI / AutoGen / LlamaIndex / Semantic Kernel-style adapter patterns
-- local, mockable tests with no live LLM calls
-
-## Public repository
-
-- GitHub: https://github.com/ruleoak/ruleoak-py
-- Version: `1.0.0`
-- License: `Apache-2.0`
-
-## Relationship to RuleOak Core
-
-`ruleoak-py` is an adapter/bridge package. RuleOak Core remains the full Agent Firewall + Flight Recorder runtime and is licensed under `AGPL-3.0-or-later` with commercial licensing available.
-
-## Install locally
+## Install
 
 ```bash
-pip install -e .
-python -m pytest
+pip install ruleoak-py
 ```
 
 ## Quickstart
 
 ```bash
-python -m ruleoak_py.cli quickstart
+ruleoak-py quickstart
+ruleoak-py demo approval-required
 ```
 
-## License
+## Code
 
-Apache-2.0. See `LICENSE`.
+```python
+from ruleoak_py import FlightRecorder, create_action_envelope, evaluate_action
+rec = FlightRecorder(run_id="demo")
+action = create_action_envelope("filesystem", "delete", {"path": "/protected"}, risk="high")
+print(evaluate_action(action, {"blockedActions": ["filesystem.delete"]}))
+```
+
+Framework-shaped examples are mock-friendly and offline. They do not claim production integration with optional frameworks unless you add those dependencies.
+
+Apache-2.0. Copyright 2026 Sun Shaobin and RuleOak contributors. Contact: hello@ruleoak.com.
